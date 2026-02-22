@@ -1,0 +1,307 @@
+/* ==========================================================================
+   #LAND-DEED COMPONENT (Namespace all styles under .land-deed)
+   ========================================================================== */
+.land-deed {
+  /* CSS Variables - Scoped to component */
+  --ld-primary: #04AA6D;
+  --ld-primary-dark: #038a5a;
+  --ld-secondary: #6c757d;
+  --ld-dark: #212529;
+  --ld-danger: #dc3545;
+  --ld-border-radius: 0.5rem;
+  --ld-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  --ld-transition: all 0.3s ease;
+
+  /* Typography */
+  --ld-font-heading: 'Playfair Display', serif;
+  --ld-font-subheading: 'Montserrat', sans-serif;
+  --ld-font-body: 'Open Sans', sans-serif;
+  --ld-font-accent: 'Poppins', sans-serif;
+  
+  /* Spacing */
+  --ld-spacing-unit: 1rem;
+  --ld-max-width: 1200px;
+  --ld-border-radius: 12px;
+  --ld-border-radius-lg: 24px;
+  
+  /* Shadows */
+  --ld-shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --ld-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --ld-shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --ld-shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+  
+  /* Transitions */
+  --ld-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Base Elements (scoped) */
+.land-deed a {
+  color: var(--ld-primary);
+  text-decoration: none;
+  transition: var(--ld-transition);
+}
+
+.land-deed a:hover {
+  color: var(--ld-primary-dark);
+  text-decoration: underline;
+}
+
+.land-deed img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container System */
+.land-deed .ld-container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .land-deed .ld-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .land-deed .ld-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .land-deed .ld-container {
+    max-width: 1140px;
+  }
+}
+
+/* Hero Section */
+.land-deed .ld-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 600px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border-radius: 0 0 var(--ld-border-radius) var(--ld-border-radius);
+}
+
+.land-deed .ld-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.land-deed .ld-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.land-deed .ld-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  z-index: 2;
+}
+
+.land-deed .ld-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Grid Layout */
+.land-deed .ld-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .land-deed .ld-grid {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+/* Content Sections */
+.land-deed .ld-section {
+  background: white;
+  border-radius: var(--ld-border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--ld-box-shadow);
+}
+
+.land-deed .ld-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.land-deed .ld-section .ld-section-title i
+{
+  color: var(--ld-primary-dark);
+}
+
+/* Cards System */
+.land-deed .ld-card {
+  padding: 1.5rem;
+  border-radius: calc(var(--ld-border-radius) / 2);
+  transition: var(--ld-transition);
+  background: inherit;
+}
+
+.land-deed .ld-card:hover {
+  transform: translateY(-3px);
+  box-shadow: .6rem 1rem 1.5rem rgba(0,0,0,0.39);
+}
+
+/* Details Grid */
+.land-deed .ld-location-grid,
+.land-deed .ld-details-grid 
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.land-deed .ld-location-item,
+.land-deed .ld-detail-item 
+{
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.land-deed .ld-location-icon,
+.land-deed .ld-detail-icon 
+{
+  background: rgba(51, 102, 255, 0.1);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ld-primary);
+  flex-shrink: 0;
+}
+
+.land-deed .ld-card:hover .ld-location-icon,
+.land-deed .ld-card:hover .ld-detail-icon
+{
+  background-color: var(--ld-primary-dark);
+  color: white; 
+}
+
+/* Documents */
+.land-deed .ld-documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.land-deed .ld-documents-grid .ld-card 
+{
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: calc(var(--ld-border-radius) / 2);
+  transition: var(--ld-transition);
+  background: white;
+}
+
+.land-deed .ld-documents-grid .ld-card:hover 
+{
+  border: 2px solid var(--ld-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+.land-deed .ld-documents-grid .ld-card .ld-document-icon {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid var(--ld-primary);
+}
+/* Color the icons appropriately */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-pdf { color: #e74c3c; } /* PDF red */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-word { color: #2b579a; } /* Word blue */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-excel { color: #217346; } /* Excel green */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-powerpoint { color: #d24726; } /* PowerPoint orange */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-image { color: #9b59b6; } /* Image purple */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-archive { color: #f39c12; } /* Archive orange */
+.land-deed .ld-documents-grid .ld-card .ld-document-icon .fa-file-code { color: #3498db; } /* Code blue */
+
+.land-deed .ld-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--ld-primary);
+  color: white;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: var(--ld-transition);
+}
+
+.land-deed .ld-download-btn:hover {
+  background: var(--ld-primary-dark);
+  color: white;
+  text-decoration: none;
+}
+
+/* Sidebar */
+.land-deed .ld-sidebar-widget {
+  background: white;
+  border-radius: var(--ld-border-radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--ld-box-shadow);
+}
+
+.land-deed .ld-sidebar-widget .ld-widget-title i
+{
+  color: var(--ld-primary-dark);
+}
+
+/* Gallery */
+.land-deed .ld-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .land-deed .ld-hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .land-deed .ld-details-grid,
+  .land-deed .ld-documents-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Utility Classes (scoped) */
+.land-deed .ld-text-center { text-align: center; }
+.land-deed .ld-mb-0 { margin-bottom: 0 !important; }
+.land-deed .ld-mt-2 { margin-top: 2rem; }

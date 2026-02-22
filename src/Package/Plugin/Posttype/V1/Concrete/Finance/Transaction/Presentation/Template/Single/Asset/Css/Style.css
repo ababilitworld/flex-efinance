@@ -1,0 +1,375 @@
+/* ==========================================================================
+   #LAND-DEED COMPONENT (Namespace all styles under .land-deed)
+   ========================================================================== */
+.fl-single-post {
+  /* CSS Variables - Scoped to component */
+  --ld-primary: #04AA6D;
+  --ld-primary-dark: #038a5a;
+  --ld-secondary: #6c757d;
+  --ld-dark: #212529;
+  --ld-danger: #dc3545;
+  --ld-border-radius: 0.5rem;
+  --ld-box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  --ld-transition: all 0.3s ease;
+
+  /* Typography */
+  --ld-font-heading: 'Playfair Display', serif;
+  --ld-font-subheading: 'Montserrat', sans-serif;
+  --ld-font-body: 'Open Sans', sans-serif;
+  --ld-font-accent: 'Poppins', sans-serif;
+  
+  /* Spacing */
+  --ld-spacing-unit: 1rem;
+  --ld-max-width: 1200px;
+  --ld-border-radius: 12px;
+  --ld-border-radius-lg: 24px;
+  
+  /* Shadows */
+  --ld-shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --ld-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --ld-shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --ld-shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+  
+  /* Transitions */
+  --ld-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Base Elements (scoped) */
+.fl-single-post a {
+  color: var(--ld-primary);
+  text-decoration: none;
+  transition: var(--ld-transition);
+}
+
+.fl-single-post a:hover {
+  color: var(--ld-primary-dark);
+  text-decoration: underline;
+}
+
+.fl-single-post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container System */
+.fl-single-post .flsp-container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .fl-single-post .flsp-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fl-single-post .flsp-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .fl-single-post .flsp-container {
+    max-width: 1140px;
+  }
+}
+
+/* Hero Section */
+.fl-single-post .flsp-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 600px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border-radius: 0 0 var(--ld-border-radius) var(--ld-border-radius);
+}
+
+.fl-single-post .flsp-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fl-single-post .flsp-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.fl-single-post .flsp-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  z-index: 2;
+}
+
+.fl-single-post .flsp-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Grid Layout */
+.fl-single-post .flsp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .fl-single-post .flsp-grid {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+/* Content Sections */
+.fl-single-post .flsp-section {
+  background: white;
+  border-radius: var(--ld-border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--ld-box-shadow);
+}
+
+.fl-single-post .flsp-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fl-single-post .flsp-section .flsp-section-title i
+{
+  color: var(--ld-primary-dark);
+}
+
+/* Cards System */
+.fl-single-post .flsp-card {
+  padding: 1.5rem;
+  border-radius: calc(var(--ld-border-radius) / 2);
+  transition: var(--ld-transition);
+  background: inherit;
+}
+
+.fl-single-post .flsp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: .6rem 1rem 1.5rem rgba(0,0,0,0.39);
+}
+
+/* Details Grid */
+.fl-single-post .flsp-location-grid,
+.fl-single-post .flsp-details-grid 
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.fl-single-post .flsp-location-item,
+.fl-single-post .flsp-detail-item 
+{
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.fl-single-post .flsp-location-icon,
+.fl-single-post .flsp-detail-icon 
+{
+  background: rgba(51, 102, 255, 0.1);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ld-primary);
+  flex-shrink: 0;
+}
+
+.fl-single-post .flsp-card:hover .flsp-location-icon,
+.fl-single-post .flsp-card:hover .flsp-detail-icon
+{
+  background-color: var(--ld-primary-dark);
+  color: white; 
+}
+
+/* Map Location Grid Layout */
+.fl-single-post .flsp-map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 650px), 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Map Card Container */
+.fl-single-post .flsp-map-grid .flsp-card {
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: calc(var(--ld-border-radius) / 2);
+  transition: var(--ld-transition);
+  background: white;
+  overflow: hidden; /* Changed from overflow-x: auto */
+}
+
+/* Map Container - Responsive Aspect Ratio */
+.fl-single-post .flsp-map-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  min-height: 300px; /* Fallback minimum height */
+  overflow: hidden;
+  border-radius: calc(var(--ld-border-radius) / 4); /* Subtle rounding */
+}
+
+/* Iframe Styling */
+.fl-single-post .flsp-map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Hover Effects */
+.fl-single-post .flsp-map-grid .flsp-card:hover {
+  border: 2px solid var(--ld-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+/* Document Icon */
+.fl-single-post .flsp-map-grid .flsp-card .flsp-document-icon {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid var(--ld-primary);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .fl-single-post .flsp-map-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fl-single-post .flsp-map-grid .flsp-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .fl-single-post .flsp-map-container {
+    padding-top: 75%; /* Taller aspect ratio for mobile */
+  }
+}
+
+/* Documents */
+.fl-single-post .flsp-documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.fl-single-post .flsp-documents-grid .flsp-card 
+{
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: calc(var(--ld-border-radius) / 2);
+  transition: var(--ld-transition);
+  background: white;
+}
+
+.fl-single-post .flsp-documents-grid .flsp-card:hover 
+{
+  border: 2px solid var(--ld-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid var(--ld-primary);
+}
+/* Color the icons appropriately */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-pdf { color: #e74c3c; } /* PDF red */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-word { color: #2b579a; } /* Word blue */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-excel { color: #217346; } /* Excel green */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-powerpoint { color: #d24726; } /* PowerPoint orange */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-image { color: #9b59b6; } /* Image purple */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-archive { color: #f39c12; } /* Archive orange */
+.fl-single-post .flsp-documents-grid .flsp-card .flsp-document-icon .fa-file-code { color: #3498db; } /* Code blue */
+
+.fl-single-post .flsp-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--ld-primary);
+  color: white;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: var(--ld-transition);
+}
+
+.fl-single-post .flsp-download-btn:hover {
+  background: var(--ld-primary-dark);
+  color: white;
+  text-decoration: none;
+}
+
+/* Sidebar */
+.fl-single-post .flsp-sidebar-widget {
+  background: white;
+  border-radius: var(--ld-border-radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--ld-box-shadow);
+}
+
+.fl-single-post .flsp-sidebar-widget .flsp-widget-title i
+{
+  color: var(--ld-primary-dark);
+}
+
+/* Gallery */
+.fl-single-post .flsp-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .fl-single-post .flsp-hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .fl-single-post .flsp-details-grid,
+  .fl-single-post .flsp-documents-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Utility Classes (scoped) */
+.fl-single-post .flsp-text-center { text-align: center; }
+.fl-single-post .flsp-mb-0 { margin-bottom: 0 !important; }
+.fl-single-post .flsp-mt-2 { margin-top: 2rem; }
