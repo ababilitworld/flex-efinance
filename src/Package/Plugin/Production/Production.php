@@ -35,7 +35,7 @@ if (!class_exists(__NAMESPACE__.'\Production'))
             });
 
             add_action('init', function () {
-                //(new ShortcodeManager())->boot();
+                (new ShortcodeManager())->boot();
             });
 
             add_action('init', function () {

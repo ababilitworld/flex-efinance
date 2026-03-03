@@ -6,10 +6,12 @@ namespace Ababilithub\FlexEFinance\Package\Plugin\Menu\V1\Concrete\Shortcode\Fin
 use Ababilithub\{
     FlexPhp\Package\Mixin\V1\Standard\Mixin as StandardMixin,
     FlexWordpress\Package\Menu\V1\Base\Menu as BaseMenu,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\Posttype as FinanceTransactionPosttype,
     FlexEFinance\Package\Plugin\Taxonomy\V1\Concrete\Finance\Transaction\Taxonomy as FinanceTransactionTaxonomy
 };
 
 use const Ababilithub\{
+    FlexEFinance\PLUGIN_PRE_HYPH,
     FlexEFinance\PLUGIN_PRE_UNDS,
     FlexEFinance\PLUGIN_DIR,
 };
@@ -86,7 +88,7 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
          */
         public function render()
         {
-            echo do_shortcode("[ababilithub-efinance-transaction-list]");
+            echo do_shortcode("[".PLUGIN_PRE_HYPH."-".FinanceTransactionPosttype::POSTTYPE."-"."list]");
         }
         
     }

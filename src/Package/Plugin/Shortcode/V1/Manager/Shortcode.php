@@ -8,9 +8,7 @@ use Ababilithub\{
     FlexWordpress\Package\Shortcode\V1\Factory\Shortcode as ShortcodeFactory,
     FlexWordpress\Package\Shortcode\V1\Contract\Shortcode as ShortcodeContract,
     FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Plugin\Info\Shortcode as PluginInfoShortcode,
-    FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Land\Deed\List\Shortcode as DeedListShortcode,
-    FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Land\Document\List\Shortcode as DocumentListShortcode,
-    
+    FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Finance\Transaction\List\Shortcode as FinanceTransactionListShortcode,
     
 };
 
@@ -25,8 +23,7 @@ class Shortcode extends BaseManager
     {
         $this->set_items([
             PluginInfoShortcode::class,
-            DeedListShortcode::class,
-            DocumentListShortcode::class,
+            FinanceTransactionListShortcode::class,
             // Add more shortcode classes here...
         ]);
     }

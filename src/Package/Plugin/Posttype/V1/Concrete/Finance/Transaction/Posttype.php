@@ -118,8 +118,8 @@ class Posttype extends BasePosttype
         //add_filter(PLUGIN_PRE_UNDS.'_admin_menu', [$this, 'add_menu_items']);
         add_filter('the_content', [$this, 'single_post']);
         
-        add_filter('post_row_actions', [$this, 'add_action_view_details'], 10, 2);
-        add_filter('page_row_actions', [$this, 'add_action_view_details'], 10, 2);
+        add_filter('post_row_actions', [$this, 'row_action_view_details'], 10, 2);
+        add_filter('page_row_actions', [$this, 'row_action_view_details'], 10, 2);
 
 
     }
