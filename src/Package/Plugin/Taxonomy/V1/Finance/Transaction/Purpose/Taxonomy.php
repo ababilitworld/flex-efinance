@@ -65,6 +65,11 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 
         protected function init_hook(): void
         {
+            add_action(self::TAXONOMY . '_add_form_fields', [ $this, 'render_add_term_meta_fields' ] );
+            add_action(self::TAXONOMY . '_edit_form_fields', [ $this, 'render_edit_term_meta_fields' ], 10, 2 );
+            add_action('created_' . self::TAXONOMY, [ $this, 'save_term_meta' ] );
+            add_action('edited_' . self::TAXONOMY, [ $this, 'save_term_meta' ] );
+            
             add_filter($this->taxonomy.'_row_actions', [$this, 'row_action_view_details'], 10, 2);            
         }
 
@@ -909,6 +914,51 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 
             return $default_terms;
 
+        }
+
+        public function render_add_term_meta_fields(): void
+        {
+
+        }
+
+        public function render_edit_term_meta_fields( int $term_id ): void
+        {
+
+        }
+
+        public function save_term_meta( int $term_id ): void
+        {
+            $taxonomy_object = get_taxonomy( self::TAXONOMY );
+
+            if ( ! $taxonomy_object || ! current_user_can( $taxonomy_object->cap->edit_terms )) 
+            {
+                return;
+            }
+
+            $value = isset(
+                $_POST[ self::META_FINANCE_TERM ]
+            )
+                ? sanitize_text_field(
+                    wp_unslash(
+                        $_POST[ self::META_FINANCE_TERM ]
+                    )
+                )
+                : '';
+
+            if ( '' === $value ) {
+                delete_term_meta(
+                    $term_id,
+                    self::META_FINANCE_TERM
+                );
+
+                return;
+            }
+
+            update_term_meta(
+                $term_id,
+                self::META_FINANCE_TERM,
+                $value
+            );
         }
     }
 }

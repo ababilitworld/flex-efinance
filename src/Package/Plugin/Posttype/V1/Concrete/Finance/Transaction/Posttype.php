@@ -104,15 +104,15 @@ class Posttype extends BasePosttype
         add_action('after_setup_theme', [$this, 'init_theme_supports'],0);
 
         add_action('add_meta_boxes', function () {
-            //(new FinanceTransactionMetaBoxManager())->boot();
+            (new FinanceTransactionMetaBoxManager())->boot();
         });
 
         add_action('add_meta_boxes', function () {
-            //(new FinanceTransactionMetaBoxContentManager())->boot();
+            (new FinanceTransactionMetaBoxContentManager())->boot();
         });
 
         add_action('save_post', function ($post_id, $post, $update) {
-            //(new FinanceTransactionMetaBoxContentManager())->save_post($post_id, $post, $update);
+            (new FinanceTransactionMetaBoxContentManager())->save_post($post_id, $post, $update);
         }, 10, 3);
 
         //add_filter(PLUGIN_PRE_UNDS.'_admin_menu', [$this, 'add_menu_items']);

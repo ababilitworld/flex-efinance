@@ -1,5 +1,5 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Manager;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Manager;
 
 (defined('ABSPATH') && defined('WPINC')) || exit();
 
@@ -7,9 +7,9 @@ use Ababilithub\{
     FlexPhp\Package\Manager\V1\Base\Manager as BaseManager,
     FlexWordpress\Package\PostMetaBoxContent\V1\Contract\PostMetaBoxContent as PostMetaBoxContentContract, 
     FlexWordpress\Package\PostMetaBoxContent\V1\Factory\PostMetaBoxContent as PostMetaBoxContentFactory,
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Concrete\Section\General\PostMetaBoxContent as GeneralSectionPostMetaBoxContent,
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Concrete\Section\Image\PostMetaBoxContent as ImageSectionPostMetaBoxContent,
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Concrete\Section\Attachment\PostMetaBoxContent as AttachmentSectionPostMetaBoxContent,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Concrete\Section\General\PostMetaBoxContent as GeneralSectionPostMetaBoxContent,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Concrete\Section\Image\PostMetaBoxContent as ImageSectionPostMetaBoxContent,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Concrete\Section\Attachment\PostMetaBoxContent as AttachmentSectionPostMetaBoxContent,
 };
 
 class  PostMetaBoxContent extends BaseManager

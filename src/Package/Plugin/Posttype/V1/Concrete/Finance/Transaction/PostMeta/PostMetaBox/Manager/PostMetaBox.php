@@ -1,5 +1,5 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBox\Manager;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBox\Manager;
     
 (defined('ABSPATH') && defined('WPINC')) || exit();
 
@@ -7,7 +7,7 @@ use Ababilithub\{
     FlexPhp\Package\Manager\V1\Base\Manager as BaseManager,
     FlexWordpress\Package\PostMetaBox\V1\Contract\PostMetaBox as PostMetaBoxContract, 
     FlexWordpress\Package\PostMetaBox\V1\Factory\PostMetaBox as PostMetaBoxFactory,
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBox\Concrete\PostMetaBoxOne\PostMetaBox as LandDeedPostMetaBox,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBox\Concrete\PostMetaBoxOne\PostMetaBox as FinanceTransactionPostMetaBox,
 };
 
 class  PostMetaBox extends BaseManager
@@ -21,7 +21,7 @@ class  PostMetaBox extends BaseManager
     {
         $this->set_items(
                 [
-                LandDeedPostMetaBox::class,
+                FinanceTransactionPostMetaBox::class,
             ]
         );
     }

@@ -1,8 +1,8 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Concrete\Section\General;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Concrete\Section\General;
 
 use Ababilithub\{
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\Posttype as LandDeedPosttype,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\Posttype as FinanceTransactionPosttype,
     FlexWordpress\Package\PostMeta\V1\Mixin\PostMeta as PostMetaMixin,
     FlexWordpress\Package\PostMetaBoxContent\V1\Base\PostMetaBoxContent as BasePostMetaBoxContent,
     FlexPhp\Package\Form\Field\V1\Factory\Field as FieldFactory,
@@ -21,7 +21,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     use PostMetaMixin;
     public function init(array $data = []) : static
     {
-        $this->posttype = LandDeedPosttype::POSTTYPE;
+        $this->posttype = FinanceTransactionPosttype::POSTTYPE;
         $this->post_id = get_the_ID();
         $this->tab_item_id = $this->posttype.'-'.'section-general';
         $this->tab_item_label = esc_html__('General');
@@ -53,7 +53,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         ?>
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Deed Details</h2>
+                    <h2 class="panel-title">Transaction Details</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
@@ -62,10 +62,10 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             $deedDateField->init([
                                 'name' => 'deed-date',
                                 'id' => 'deed-date',
-                                'label' => 'Deed Date',
+                                'label' => 'Transaction Date',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Deed Date used in the Deed',
+                                'help_text' => 'Enter Transaction Date used in the Transaction',
                                 'value' => $meta_values['deed_date'],
                                 'data' => [
                                     'custom' => 'value'
@@ -82,10 +82,10 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             $deedNumberField->init([
                                 'name' => 'deed-number',
                                 'id' => 'deed-number',
-                                'label' => 'Deed Number',
+                                'label' => 'Transaction Number',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Deed number of the deed',
+                                'help_text' => 'Enter Transaction number of the deed',
                                 'value' => $meta_values['deed_number'],
                                 'data' => [
                                     'custom' => 'value'
@@ -121,10 +121,10 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             $landQuantityField->init([
                                 'name' => 'land-quantity',
                                 'id' => 'land-quantity',
-                                'label' => 'Land Quantity (Decimal)',
+                                'label' => 'Finance Quantity (Decimal)',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Land Quantity in decimal used in the Deed',
+                                'help_text' => 'Enter Finance Quantity in decimal used in the Transaction',
                                 'value' => $meta_values['land_quantity'],
                                 'data' => [
                                     'custom' => 'value'

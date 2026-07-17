@@ -1,8 +1,8 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Concrete\Section\Image;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Concrete\Section\Image;
 
 use Ababilithub\{
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\Posttype as LandDeedPosttype,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\Posttype as FinanceTransactionPosttype,
     FlexWordpress\Package\PostMeta\V1\Mixin\PostMeta as PostMetaMixin,
     FlexWordpress\Package\PostMetaBoxContent\V1\Base\PostMetaBoxContent as BasePostMetaBoxContent,
     FlexPhp\Package\Form\Field\V1\Factory\Field as FieldFactory,
@@ -21,7 +21,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     use PostMetaMixin;
     public function init(array $data = []) : static
     {
-        $this->posttype = LandDeedPosttype::POSTTYPE;
+        $this->posttype = FinanceTransactionPosttype::POSTTYPE;
         $this->post_id = get_the_ID();
         $this->tab_item_id = $this->posttype.'-'.'section-image';
         $this->tab_item_label = esc_html__('Images');
@@ -54,7 +54,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
             
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Deed Images</h2>
+                    <h2 class="panel-title">Transaction Images</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
@@ -63,7 +63,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             $imageField->init([
                                 'name' => 'deed-thumbnail-image',
                                 'id' => 'deed-thumbnail-image',
-                                'label' => 'Deed Thumbnail',
+                                'label' => 'Transaction Thumbnail',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => false,
@@ -86,7 +86,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             $imageField->init([
                                 'name' => 'deed-images',
                                 'id' => 'deed-images',
-                                'label' => 'Deed Images',
+                                'label' => 'Transaction Images',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => true,

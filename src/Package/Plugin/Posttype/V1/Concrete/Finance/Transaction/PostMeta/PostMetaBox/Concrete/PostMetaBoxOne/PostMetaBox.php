@@ -1,9 +1,9 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBox\Concrete\PostMetaBoxOne;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBox\Concrete\PostMetaBoxOne;
 
 use Ababilithub\{
     FlexWordpress\Package\PostMetaBox\V1\Base\PostMetaBox as BasePostMetaBox,
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\Posttype as LandDeedPosttype,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\Posttype as FinanceTransactionPosttype,
 };
 
 use const Ababilithub\{
@@ -15,7 +15,7 @@ class PostMetaBox extends BasePostMetaBox
 {
     public function init() : void
     {
-        $this->posttype = LandDeedPosttype::POSTTYPE;
+        $this->posttype = FinanceTransactionPosttype::POSTTYPE;
         $this->id = PLUGIN_PRE_HYPH.'-'.$this->posttype.'-'.'meta-box';
         $this->title = esc_html__(' Info : ', 'flex-efinance') . get_the_title(get_the_ID());
     }
