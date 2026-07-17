@@ -16,10 +16,11 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 {
     class Taxonomy extends BaseTaxonomy
     {
+        public const TAXONOMY = 'finance-transaction-type'; 
         public function init(): void
         {
-            $this->taxonomy = 'finance-transaction-type';
-            $this->slug = 'finance-transaction-type';
+            $this->taxonomy = self::TAXONOMY;
+            $this->slug = self::TAXONOMY;
 
             $this->set_labels([
                 'name'              => _x('Transaction Types', 'taxonomy general name', 'flex-efinance'),
@@ -50,32 +51,7 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
                 'show_in_nav_menus' => true,
             ]);
 
-            $this->set_terms([
-                $this->generate_term_data(
-                    'cash',
-                    'Cash',
-                    'Transaction Type Cash',
-                    [
-                        'finance_term' => 'Cash',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'non-cash',
-                    'Non Cash',
-                    'Transaction Type Non Cash',
-                    [
-                        'finance_term' => 'Non-cash',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'due',
-                    'Due',
-                    'Transaction Type Due',
-                    [
-                        'finance_term' => 'Due',
-                    ]
-                ),
-            ]);
+            $this->set_terms($this->generate_terms($this->get_default_terms()));
 
             $this->init_service();
             $this->init_hook();
@@ -89,7 +65,37 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 
         protected function init_hook(): void
         {
-            add_filter($this->taxonomy.'_row_actions', [$this, 'add_action_view_details'], 10, 2);            
+            add_filter($this->taxonomy.'_row_actions', [$this, 'row_action_view_details'], 10, 2);            
+        }
+
+        /**
+         * Get the default terms.
+         *
+         * @return array<int, mixed>
+         */
+        protected function get_default_terms(): array
+        {
+            $default_terms = [
+                /*
+                * General transaction purposes.
+                */
+                'normal' => [
+                    'name'        => 'Normal',
+                    'description' => 'Transaction Type',
+                    'metas'       => [
+                        'finance_term' => 'Type',
+                    ],
+                ],
+                'deed' => [
+                    'name'        => 'Deed',
+                    'description' => 'Transaction Type',
+                    'metas'       => [
+                        'finance_term' => 'Type',
+                    ],
+                ],
+            ];
+
+            return $default_terms;
         }
     }
 }

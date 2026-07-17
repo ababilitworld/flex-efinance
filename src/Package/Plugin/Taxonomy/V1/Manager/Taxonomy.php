@@ -7,9 +7,13 @@ use Ababilithub\{
     FlexPhp\Package\Manager\V1\Base\Manager as BaseManager,
     FlexWordpress\Package\Taxonomy\V1\Factory\Taxonomy as TaxonomyFactory,
     FlexWordpress\Package\Taxonomy\V1\Contract\Taxonomy as TaxonomyContract,
+    FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Medium\Taxonomy as FinanceTransactionMediumTaxonomy,
+    FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Purpose\Taxonomy as FinanceTransactionPurposeTaxonomy,
     FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Type\Taxonomy as FinanceTransactionTypeTaxonomy,
     FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Action\Taxonomy as FinanceTransactionActionTaxonomy,
     FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Domain\Taxonomy as FinanceTransactionDomainTaxonomy,
+    FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Account\Taxonomy as FinanceTransactionAccountTaxonomy,
+    
 };
 
 class Taxonomy extends BaseManager
@@ -22,9 +26,12 @@ class Taxonomy extends BaseManager
     protected function init(): void
     {
         $this->set_items([
+            FinanceTransactionAccountTaxonomy::class,
+            FinanceTransactionPurposeTaxonomy::class,            
             FinanceTransactionActionTaxonomy::class,
             FinanceTransactionTypeTaxonomy::class,
             FinanceTransactionDomainTaxonomy::class,
+            FinanceTransactionMediumTaxonomy::class
             // Add more taxonomy classes here...
         ]);
     }

@@ -70,7 +70,7 @@ class Posttype extends BasePosttype
         );
 
         $this->set_taxonomies(
-            array('finance-transaction-type','finance-transaction-action','finance-transaction-domain')
+            array('finance-transaction-purpose','finance-transaction-type','finance-transaction-action','finance-transaction-domain','finance-transaction-medium')
         );
 
         $this->set_args([

@@ -81,7 +81,7 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 
         protected function init_hook(): void
         {
-            add_filter($this->taxonomy.'_row_actions', [$this, 'add_action_view_details'], 10, 2);            
+            add_filter($this->taxonomy.'_row_actions', [$this, 'row_action_view_details'], 10, 2);            
         }
     }
 }

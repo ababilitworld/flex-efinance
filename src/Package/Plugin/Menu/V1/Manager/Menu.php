@@ -8,6 +8,8 @@ use Ababilithub\{
     FlexWordpress\Package\Menu\V1\Contract\Menu as MenuContract, 
     FlexWordpress\Package\Menu\V1\Factory\Menu as MenuFactory,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Main\Menu as MainMenu,
+    FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Purpose\Menu as FinanceTransactionPurposeMenu,
+    FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Type\Menu as FinanceTransactionTypeMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Posttype\Finance\Transaction\Menu as FinanceTransactionMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Shortcode\Finance\Transaction\List\Menu as FinanceTransactionListMenu,
 
@@ -25,6 +27,8 @@ class  Menu extends BaseManager
         $this->set_items(
             [
                 MainMenu::class,
+                FinanceTransactionPurposeMenu::class,
+                FinanceTransactionTypeMenu::class,
                 FinanceTransactionMenu::class,
                 FinanceTransactionListMenu::class,                  
             ]
