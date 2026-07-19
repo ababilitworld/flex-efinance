@@ -27,11 +27,11 @@ class Taxonomy extends BaseManager
     {
         $this->set_items([
             FinanceTransactionAccountTaxonomy::class,
-            FinanceTransactionPurposeTaxonomy::class,            
-            FinanceTransactionActionTaxonomy::class,
+            FinanceTransactionPurposeTaxonomy::class,
             FinanceTransactionTypeTaxonomy::class,
             FinanceTransactionDomainTaxonomy::class,
-            FinanceTransactionMediumTaxonomy::class
+            FinanceTransactionMediumTaxonomy::class,
+            FinanceTransactionActionTaxonomy::class,
             // Add more taxonomy classes here...
         ]);
     }

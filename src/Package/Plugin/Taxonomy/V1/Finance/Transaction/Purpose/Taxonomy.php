@@ -74,7 +74,7 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
         }
 
         /**
-         * Get the default transaction-purpose terms.
+         * Get the default terms.
          *
          * @return array<int, mixed>
          */

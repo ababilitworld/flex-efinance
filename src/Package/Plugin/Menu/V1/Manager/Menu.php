@@ -10,6 +10,8 @@ use Ababilithub\{
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Main\Menu as MainMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Purpose\Menu as FinanceTransactionPurposeMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Type\Menu as FinanceTransactionTypeMenu,
+    FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Medium\Menu as FinanceTransactionMediumMenu,
+    FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Action\Menu as FinanceTransactionActionMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Posttype\Finance\Transaction\Menu as FinanceTransactionMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Shortcode\Finance\Transaction\List\Menu as FinanceTransactionListMenu,
 
@@ -29,6 +31,8 @@ class  Menu extends BaseManager
                 MainMenu::class,
                 FinanceTransactionPurposeMenu::class,
                 FinanceTransactionTypeMenu::class,
+                FinanceTransactionMediumMenu::class,
+                FinanceTransactionActionMenu::class,
                 FinanceTransactionMenu::class,
                 FinanceTransactionListMenu::class,                  
             ]

@@ -53,7 +53,7 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
                 'capability' => 'manage_options',
                 'menu_slug' => 'edit-tags.php?taxonomy='.FinanceTransactionPurposeTaxonomy::TAXONOMY,
                 'callback' => null,
-                'position' => 2,
+                'position' => 1,
             ];
 
             return $menu_items;

@@ -53,7 +53,7 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
                 'capability' => 'manage_options',
                 'menu_slug' => 'edit.php?post_type='.TransactionPosttype::POSTTYPE,
                 'callback' => null,
-                'position' => 3,
+                'position' => 5,
             ];
 
             return $menu_items;

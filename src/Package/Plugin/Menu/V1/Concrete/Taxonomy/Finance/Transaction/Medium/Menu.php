@@ -1,12 +1,12 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Type;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Medium;
 
 (defined( 'ABSPATH' ) && defined( 'WPINC' )) || exit();
 
 use Ababilithub\{
     FlexPhp\Package\Mixin\V1\Standard\Mixin as StandardMixin,
     FlexWordpress\Package\Menu\V1\Base\Menu as BaseMenu,
-    FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Type\Taxonomy as FinanceTransactionTypeTaxonomy
+    FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Medium\Taxonomy as FinanceTransactionMediumTaxonomy
 };
 
 use const Ababilithub\{
@@ -49,11 +49,11 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
                 'type' => 'submenu',
                 'parent_slug' => 'flex-efinance',
                 'page_title' => 'Transaction',
-                'menu_title' => 'Transaction Type',
+                'menu_title' => 'Transaction Medium',
                 'capability' => 'manage_options',
-                'menu_slug' => 'edit-tags.php?taxonomy='.FinanceTransactionTypeTaxonomy::TAXONOMY,
+                'menu_slug' => 'edit-tags.php?taxonomy='.FinanceTransactionMediumTaxonomy::TAXONOMY,
                 'callback' => null,
-                'position' => 2,
+                'position' => 3,
             ];
 
             return $menu_items;

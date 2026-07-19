@@ -16,10 +16,11 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 {
     class Taxonomy extends BaseTaxonomy
     {
+        public const TAXONOMY = 'finance-transaction-domain';
         public function init(): void
         {
-            $this->taxonomy = 'finance-transaction-domain';
-            $this->slug = 'finance-transaction-domain';
+            $this->taxonomy = self::TAXONOMY;
+            $this->slug = self::TAXONOMY;
 
             $this->set_labels([
                 'name'              => _x('Transaction Domains', 'taxonomy general name', 'flex-efinance'),
@@ -50,24 +51,7 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
                 'show_in_nav_menus' => true,
             ]);
 
-            $this->set_terms([
-                $this->generate_term_data(
-                    'internal',
-                    'Internal',
-                    'Transaction Domain Internal',
-                    [
-                        'finance_term' => 'Internal',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'external',
-                    'External',
-                    'Transaction Domain External',
-                    [
-                        'finance_term' => 'External',
-                    ]
-                ),
-            ]);
+            $this->set_terms($this->generate_terms($this->get_default_terms()));
 
             $this->init_service();
             $this->init_hook();
@@ -82,6 +66,36 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
         protected function init_hook(): void
         {
             add_filter($this->taxonomy.'_row_actions', [$this, 'row_action_view_details'], 10, 2);            
+        }
+
+        /**
+         * Get the default terms.
+         *
+         * @return array<int, mixed>
+         */
+        protected function get_default_terms(): array
+        {
+            $default_terms = [
+                /*
+                * General transaction purposes.
+                */
+                'internal' => [
+                    'name'        => 'Internal',
+                    'description' => 'Transaction Domain',
+                    'metas'       => [
+                        'finance_term' => 'Internal',
+                    ],
+                ],
+                'external' => [
+                    'name'        => 'External',
+                    'description' => 'Transaction Domain',
+                    'metas'       => [
+                        'finance_term' => 'External',
+                    ],
+                ],
+            ];
+
+            return $default_terms;
         }
     }
 }

@@ -16,10 +16,11 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 {
     class Taxonomy extends BaseTaxonomy
     {
+        public const TAXONOMY = 'finance-transaction-medium';
         public function init(): void
         {
-            $this->taxonomy = 'finance-transaction-medium';
-            $this->slug = 'finance-transaction-medium';
+            $this->taxonomy = self::TAXONOMY;
+            $this->slug = self::TAXONOMY;
 
             $this->set_labels([
                 'name'              => _x('Transaction Mediums', 'taxonomy general name', 'flex-efinance'),
@@ -50,80 +51,7 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
                 'show_in_nav_menus' => true,
             ]);
 
-            $this->set_terms([
-                $this->generate_term_data(
-                    'cash',
-                    'Cash',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'bank-deposit',
-                    'Bank Deposit',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'check',
-                    'Check',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'channel beftn',
-                    'Channel BEFTN',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'channel swift',
-                    'Channel SWIFT',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'channel-payment-gateway',
-                    'Channel Payment Gateway',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'channel-mfs-bkash',
-                    'Channel MFS bKash',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'channel-mfs-nagad',
-                    'Channel MFS Nagad',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-                $this->generate_term_data(
-                    'channel-mfs-rocket',
-                    'Channel MFS Rocket',
-                    'Transaction Medium',
-                    [
-                        'finance_term' => 'Medium',
-                    ]
-                ),
-            ]);
+            $this->set_terms($this->generate_terms($this->get_default_terms()));
 
             $this->init_service();
             $this->init_hook();
@@ -138,6 +66,85 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
         protected function init_hook(): void
         {
             add_filter($this->taxonomy.'_row_actions', [$this, 'row_action_view_details'], 10, 2);            
+        }
+
+        /**
+         * Get the default terms.
+         *
+         * @return array<int, mixed>
+         */
+        protected function get_default_terms(): array
+        {
+            $default_terms = [
+                /*
+                * General transaction purposes.
+                */
+                'cash' => [
+                    'name'        => 'Cash',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'Cash',
+                    ],
+                ],
+                'bank-deposit' => [
+                    'name'        => 'Bank Deposit',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'Bank Deposit',
+                    ],
+                ],
+                'check' => [
+                    'name'        => 'Check',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'Check',
+                    ],
+                ],
+                'channel-beftn' => [
+                    'name'        => 'BEFTN',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'BEFTN',
+                    ],
+                ],
+                'channel-swift' => [
+                    'name'        => 'SWIFT',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'SWIFT',
+                    ],
+                ],
+                'channel-payment-gateway' => [
+                    'name'        => 'Payment Gateway',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'Payment Gateway',
+                    ],
+                ],
+                'channel-mfs-bkash' => [
+                    'name'        => 'bKash',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'bKash',
+                    ],
+                ],
+                'channel-mfs-nagad' => [
+                    'name'        => 'Nagad',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'Nagad',
+                    ],
+                ],
+                'channel-mfs-rocket' => [
+                    'name'        => 'Rocket',
+                    'description' => 'Transaction Medium',
+                    'metas'       => [
+                        'finance_term' => 'Rocket',
+                    ],
+                ],
+            ];
+
+            return $default_terms;
         }
     }
 }
