@@ -22,6 +22,19 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
 
         public function init(array $data = []) : static
         {
+            $this->type = 'menu';
+            //$this->parent_slug = 'flex-efinance';
+            $this->page_title = 'Flex Finance';
+            $this->menu_title = 'Flex Finance';
+            $this->capability = 'manage_options';
+            $this->menu_slug = 'flex-efinance';
+            $this->callback = [$this, 'render_menu'];
+            $this->position = 9;
+            $this->icon = 'dashicons-location-alt';
+            $this->screen_rules = [
+                'id' => 'flex-efinance',
+            ];
+
             $this->menu_filter_name = PLUGIN_PRE_UNDS.'_admin_menu';
             $this->init_service();
             $this->init_hook();
@@ -37,6 +50,8 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
         {
             // Add filter to collect menu items
             add_filter($this->menu_filter_name, [$this, 'add_menu_items']);
+            add_filter( 'parent_file', [ $this, 'set_active_parent_menu' ] );
+            add_filter( 'submenu_file', [ $this, 'set_active_submenu' ] );
             
         }
 
@@ -46,14 +61,15 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
         public function add_menu_items($menu_items = [])
         {
             $menu_items[] = [
-                'type' => 'menu',
-                'page_title' => 'Flex EFinance',
-                'menu_title' => 'Flex EFinance',
-                'capability' => 'manage_options',
-                'menu_slug' => 'flex-efinance',
-                'callback' => [$this, 'render_main_page'],
-                'icon' => 'dashicons-location-alt',
-                'position' => 9
+                'type' => $this->type,
+                'parent_slug' => $this->parent_slug,
+                'page_title' => $this->page_title,
+                'menu_title' => $this->menu_title,
+                'capability' => $this->capability,
+                'menu_slug' => $this->menu_slug,
+                'callback' => $this->callback,
+                'position' => $this->position,
+                'icon' => $this->icon,
             ];
 
             return $menu_items;
@@ -62,7 +78,7 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
         /**
          * Custom main page render
          */
-        public function render_main_page()
+        public function render_menu()
         {
             echo do_shortcode('[' . PLUGIN_PRE_HYPH . '-plugin-info]');
         }

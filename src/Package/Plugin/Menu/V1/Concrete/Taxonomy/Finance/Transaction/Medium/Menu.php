@@ -22,6 +22,18 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
 
         public function init(array $data = []) : static
         {
+            $this->type = 'submenu';
+            $this->parent_slug = 'flex-efinance';
+            $this->page_title = 'Transaction Medium';
+            $this->menu_title = 'Transaction Medium';
+            $this->capability = 'manage_options';
+            $this->menu_slug = 'edit-tags.php?taxonomy='.FinanceTransactionMediumTaxonomy::TAXONOMY;
+            $this->callback = null;
+            $this->position = 3;
+            $this->screen_rules = [
+                'taxonomy' => FinanceTransactionMediumTaxonomy::TAXONOMY,
+            ];
+
             $this->menu_filter_name = PLUGIN_PRE_UNDS.'_admin_menu';
             $this->init_service();
             $this->init_hook();
@@ -37,6 +49,8 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
         {
             // Add filter to collect menu items
             add_filter($this->menu_filter_name, [$this, 'add_menu_items']);
+            add_filter( 'parent_file', [ $this, 'set_active_parent_menu' ] );
+            add_filter( 'submenu_file', [ $this, 'set_active_submenu' ] );
             
         }
 
@@ -46,14 +60,14 @@ if (!class_exists(__NAMESPACE__.'\Menu'))
         public function add_menu_items($menu_items = [])
         {
             $menu_items[] = [
-                'type' => 'submenu',
-                'parent_slug' => 'flex-efinance',
-                'page_title' => 'Transaction',
-                'menu_title' => 'Transaction Medium',
-                'capability' => 'manage_options',
-                'menu_slug' => 'edit-tags.php?taxonomy='.FinanceTransactionMediumTaxonomy::TAXONOMY,
-                'callback' => null,
-                'position' => 3,
+                'type' => $this->type,
+                'parent_slug' => $this->parent_slug,
+                'page_title' => $this->page_title,
+                'menu_title' => $this->menu_title,
+                'capability' => $this->capability,
+                'menu_slug' => $this->menu_slug,
+                'callback' => $this->callback,
+                'position' => $this->position,
             ];
 
             return $menu_items;
