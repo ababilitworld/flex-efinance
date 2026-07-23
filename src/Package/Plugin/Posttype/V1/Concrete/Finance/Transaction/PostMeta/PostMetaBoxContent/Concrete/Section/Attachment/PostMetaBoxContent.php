@@ -24,7 +24,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         $this->posttype = FinanceTransactionPosttype::POSTTYPE;
         $this->post_id = get_the_ID();
         $this->tab_item_id = $this->posttype.'-'.'section-attachment';
-        $this->tab_item_label = esc_html__('Docs');
+        $this->tab_item_label = esc_html__('Attachments');
         $this->tab_item_icon = 'fas fa-edit';
         $this->tab_item_status = '';
 
@@ -53,16 +53,16 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         ?>
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Transaction Attachments</h2>
+                    <h2 class="panel-title">Attachments</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
                         <?php
                             $deedPdfField = FieldFactory::get(DocField::class);
                             $deedPdfField->init([
-                                'name' => 'deed-attachments',
-                                'id' => 'deed-attachments',
-                                'label' => 'Transaction Attachments',
+                                'name' => 'attachments',
+                                'id' => 'attachments',
+                                'label' => 'Attachments',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => true,
@@ -71,7 +71,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                                 'help_text' => 'Only PDF, Word, and Excel files are allowed',
                                 'max_size' => 5242880, // 5MB
                                 'enable_media_library' => true,
-                                'preview_items' => $meta_values['deed_attachments'],
+                                'preview_items' => $meta_values['attachments'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -90,7 +90,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     public function get_meta_values($post_id): array 
     {
         return [
-            'deed_attachments' => get_post_meta($post_id, 'deed-attachments', true) ?: []
+            'attachments' => get_post_meta($post_id, 'attachments', true) ?: []
         ];
     }
 
@@ -101,6 +101,6 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
             return;
         }
 
-        $this->save_multiple_attachments($post_id,'deed-attachments',array_map('sanitize_text_field',$_POST['deed-attachments'] ?? []));
+        $this->save_multiple_attachments($post_id,'attachments',array_map('sanitize_text_field',$_POST['attachments'] ?? []));
     }
 }

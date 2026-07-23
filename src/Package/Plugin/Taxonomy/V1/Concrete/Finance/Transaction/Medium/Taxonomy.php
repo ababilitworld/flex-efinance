@@ -1,5 +1,5 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Medium;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Taxonomy\V1\Concrete\Finance\Transaction\Medium;
 
 (defined('ABSPATH') && defined('WPINC')) || exit();
 

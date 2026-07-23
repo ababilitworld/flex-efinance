@@ -1,9 +1,9 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\PostMeta\PostMetaBoxContent\Concrete\GeneralSettings;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\PostMeta\PostMetaBoxContent\Concrete\GeneralSettings;
 
 use Ababilithub\{
     
-    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Land\Deed\Posttype as LandDeedPosttype,
+    FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\Posttype as FinanceTransactionPosttype,
     FlexWordpress\Package\PostMeta\V1\Mixin\PostMeta as PostMetaMixin,
     FlexWordpress\Package\PostMetaBoxContent\V1\Base\PostMetaBoxContent as BasePostMetaBoxContent,
     FlexPhp\Package\Form\Field\V1\Factory\Field as FieldFactory,
@@ -22,7 +22,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     use PostMetaMixin;
     public function init(array $data = []) : static
     {
-        $this->posttype = LandDeedPosttype::POSTTYPE;
+        $this->posttype = FinanceTransactionPosttype::POSTTYPE;
         $this->post_id = get_the_ID();
         $this->tab_item_id = $this->posttype.'-'.'general-settings';
         $this->tab_item_label = esc_html__('General Settings');
@@ -54,20 +54,20 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         ?>
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Deed Details</h2>
+                    <h2 class="panel-title">Transaction Details</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
                         <?php
                             $deedDateField = FieldFactory::get(TextField::class);
                             $deedDateField->init([
-                                'name' => 'deed-date',
-                                'id' => 'deed-date',
-                                'label' => 'Deed Date',
+                                'name' => 'trx-date',
+                                'id' => 'trx-date',
+                                'label' => 'Transaction Date',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Deed Date used in the Deed',
-                                'value' => $meta_values['deed_date'],
+                                'help_text' => 'Enter Transaction Date',
+                                'value' => $meta_values['trx_date'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -81,13 +81,13 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                         <?php
                             $deedNumberField = FieldFactory::get(TextField::class);
                             $deedNumberField->init([
-                                'name' => 'deed-number',
-                                'id' => 'deed-number',
-                                'label' => 'Deed Number',
+                                'name' => 'trx-amount',
+                                'id' => 'trx-amount',
+                                'label' => 'Trx Amount',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Deed number of the deed',
-                                'value' => $meta_values['deed_number'],
+                                'help_text' => 'Enter Transaction Amount',
+                                'value' => $meta_values['trx_amount'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -99,13 +99,13 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                         <?php
                             $plotNumberField = FieldFactory::get(TextField::class);
                             $plotNumberField->init([
-                                'name' => 'plot-number',
-                                'id' => 'plot-number',
-                                'label' => 'Plot Number',
+                                'name' => 'trx-dcr-book-id',
+                                'id' => 'trx-dcr-book-id',
+                                'label' => 'DCR Book ID',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Plot number according to the Respective Survey',
-                                'value' => $meta_values['plot_number'],
+                                'help_text' => 'Enter DCR Book ID',
+                                'value' => $meta_values['trx_dcr_book_id'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -120,13 +120,13 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                         <?php
                             $landQuantityField = FieldFactory::get(TextField::class);
                             $landQuantityField->init([
-                                'name' => 'land-quantity',
-                                'id' => 'land-quantity',
-                                'label' => 'Land Quantity (Decimal)',
+                                'name' => 'trx-dcr-book-trx-id',
+                                'id' => 'trx-dcr-book-trx-id',
+                                'label' => 'DCR Book Trx ID',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Land Quantity in decimal used in the Deed',
-                                'value' => $meta_values['land_quantity'],
+                                'help_text' => 'Enter DCR Book Trx ID',
+                                'value' => $meta_values['trx_dcr_book_trx_id'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -141,16 +141,16 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
             
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Deed Images</h2>
+                    <h2 class="panel-title">Transaction Images</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
                         <?php
                             $imageField = FieldFactory::get(ImageField::class);
                             $imageField->init([
-                                'name' => 'deed-thumbnail-image',
-                                'id' => 'deed-thumbnail-image',
-                                'label' => 'Deed Thumbnail',
+                                'name' => 'thumbnail-image',
+                                'id' => 'thumbnail-image',
+                                'label' => 'Transaction Thumbnail',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => false,
@@ -159,7 +159,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                                 'enable_media_library' => true,
                                 'upload_action_text' => 'Select Image',
                                 'help_text' => 'Only jpg, png, gif, webp files are allowed',
-                                'preview_items' => $meta_values['deed_thumbnail_image'],
+                                'preview_items' => $meta_values['thumbnail_image'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -171,9 +171,9 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                         <?php
                             $imageField = FieldFactory::get(ImageField::class);
                             $imageField->init([
-                                'name' => 'deed-images',
-                                'id' => 'deed-images',
-                                'label' => 'Deed Images',
+                                'name' => 'gallery-images',
+                                'id' => 'gallery-images',
+                                'label' => 'Transaction Images',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => true,
@@ -182,7 +182,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                                 'enable_media_library' => true,
                                 'upload_action_text' => 'Select Images',
                                 'help_text' => 'Only jpg, png, gif, webp files are allowed',
-                                'preview_items' => $meta_values['deed_images'],
+                                'preview_items' => $meta_values['gallery_images'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -197,16 +197,16 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
 
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Deed Attachments</h2>
+                    <h2 class="panel-title">Transaction Attachments</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
                         <?php
                             $deedPdfField = FieldFactory::get(DocField::class);
                             $deedPdfField->init([
-                                'name' => 'deed-attachments',
-                                'id' => 'deed-attachments',
-                                'label' => 'Deed Attachments',
+                                'name' => 'attachments',
+                                'id' => 'attachments',
+                                'label' => 'Transaction Attachments',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => true,
@@ -215,7 +215,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                                 'help_text' => 'Only PDF, Word, and Excel files are allowed',
                                 'max_size' => 5242880, // 5MB
                                 'enable_media_library' => true,
-                                'preview_items' => $meta_values['deed_attachments'],
+                                'preview_items' => $meta_values['attachments'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -234,13 +234,13 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     public function get_meta_values($post_id): array 
     {
         return [
-            'deed_date' => get_post_meta($post_id, 'deed-date', true) ?: '',
-            'deed_number' => get_post_meta($post_id, 'deed-number', true) ?: '',
-            'plot_number' => get_post_meta($post_id, 'plot-number', true) ?: '',
-            'land_quantity' => get_post_meta($post_id, 'land-quantity', true) ?: '',
-            'deed_thumbnail_image' => get_post_meta($post_id, 'deed-thumbnail-image', true) ?: '',
-            'deed_images' => get_post_meta($post_id, 'deed-images', true) ?: [],
-            'deed_attachments' => get_post_meta($post_id, 'deed-attachments', true) ?: []
+            'trx_date' => get_post_meta($post_id, 'trx-date', true) ?: '',
+            'trx_amount' => get_post_meta($post_id, 'trx-amount', true) ?: '',
+            'trx_dcr_book_id' => get_post_meta($post_id, 'trx-dcr-book-id', true) ?: '',
+            'trx_dcr_book_trx_id' => get_post_meta($post_id, 'trx-dcr-book-trx-id', true) ?: '',
+            'thumbnail_image' => get_post_meta($post_id, 'thumbnail-image', true) ?: '',
+            'gallery_images' => get_post_meta($post_id, 'gallery-images', true) ?: [],
+            'attachments' => get_post_meta($post_id, 'attachments', true) ?: []
         ];
     }
 
@@ -251,12 +251,12 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
             return;
         }
 
-        $this->save_text_field($post_id,'deed-date',sanitize_text_field($_POST['deed-date'] ?? ''));
-        $this->save_text_field($post_id,'deed-number',sanitize_text_field($_POST['deed-number'] ?? ''));
-        $this->save_text_field($post_id,'plot-number',sanitize_text_field($_POST['plot-number'] ?? ''));
-        $this->save_text_field($post_id,'land-quantity',sanitize_text_field($_POST['land-quantity'] ?? ''));
-        $this->save_thumbnail_image($post_id,'deed-thumbnail-image',absint($_POST['deed-thumbnail-image'] ?? ''));
-        $this->save_multiple_images($post_id,'deed-images',array_map('sanitize_text_field',$_POST['deed-images'] ?? []));
-        $this->save_multiple_attachments($post_id,'deed-attachments',array_map('sanitize_text_field',$_POST['deed-attachments'] ?? []));
+        $this->save_text_field($post_id,'trx-date',sanitize_text_field($_POST['trx-date'] ?? ''));
+        $this->save_text_field($post_id,'trx-amount',sanitize_text_field($_POST['trx-amount'] ?? ''));
+        $this->save_text_field($post_id,'trx-dcr-book-id',sanitize_text_field($_POST['trx-dcr-book-id'] ?? ''));
+        $this->save_text_field($post_id,'trx-dcr-book-trx-id',sanitize_text_field($_POST['trx-dcr-book-trx-id'] ?? ''));
+        $this->save_thumbnail_image($post_id,'thumbnail-image',absint($_POST['thumbnail-image'] ?? ''));
+        $this->save_multiple_images($post_id,'gallery-images',array_map('sanitize_text_field',$_POST['gallery-images'] ?? []));
+        $this->save_multiple_attachments($post_id,'attachments',array_map('sanitize_text_field',$_POST['attachments'] ?? []));
     }
 }

@@ -18,6 +18,14 @@ class PostMetaBox extends BasePostMetaBox
         $this->posttype = FinanceTransactionPosttype::POSTTYPE;
         $this->id = PLUGIN_PRE_HYPH.'-'.$this->posttype.'-'.'meta-box';
         $this->title = esc_html__(' Info : ', 'flex-efinance') . get_the_title(get_the_ID());
+        $this->hook_prefix = PLUGIN_PRE_UNDS;
+        $this->content_hook_suffix = 'meta_box_tab_content';
+        $this->set_tab_style([
+            'type' => 'horizontal',
+            'size' => 'medium',
+            'color' => 'aurora',
+            'title' => esc_html__('Info', 'flex-efinance'),
+        ]);
     }
 
     public function render(): void
@@ -25,27 +33,6 @@ class PostMetaBox extends BasePostMetaBox
         $post_id = get_the_ID();
         // Dynamic title with post name if needed
         $this->title = esc_html__('Info : ', 'flex-efinance') . get_the_title($post_id);
-        ?>
-        <div class="fpba">
-            <div class="meta-box">
-                <div class="app-container">
-                    <div class="vertical-tabs">
-                        <div class="tabs-header">
-                            <button class="toggle-tabs" id="toggleTabs">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <span class="tabs-title">Info</span>
-                        </div>
-                        <ul class="tab-items">
-                            <?php do_action(PLUGIN_PRE_UNDS.'_'.$this->posttype.'_'.'meta_box_tab_item'); ?>
-                        </ul>
-                    </div>
-                    <main class="content-area">
-                        <?php do_action(PLUGIN_PRE_UNDS.'_'.$this->posttype.'_'.'meta_box_tab_content', $post_id); ?>
-                    </main>
-                </div>
-            </div>
-        </div>
-        <?php
+        $this->renderDefault();
     }
 }

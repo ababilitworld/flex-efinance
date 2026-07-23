@@ -53,20 +53,20 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         ?>
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Transaction Details</h2>
+                    <h2 class="panel-title">Details Information</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
                         <?php
                             $deedDateField = FieldFactory::get(TextField::class);
                             $deedDateField->init([
-                                'name' => 'deed-date',
-                                'id' => 'deed-date',
+                                'name' => 'trx-date',
+                                'id' => 'trx-date',
                                 'label' => 'Transaction Date',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Transaction Date used in the Transaction',
-                                'value' => $meta_values['deed_date'],
+                                'help_text' => 'Enter Transaction Date',
+                                'value' => $meta_values['trx_date'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -78,15 +78,15 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                     </div>
                     <div class="panel-row two-columns">
                         <?php
-                            $deedNumberField = FieldFactory::get(TextField::class);
-                            $deedNumberField->init([
-                                'name' => 'deed-number',
-                                'id' => 'deed-number',
-                                'label' => 'Transaction Number',
+                            $deedDateField = FieldFactory::get(TextField::class);
+                            $deedDateField->init([
+                                'name' => 'pr-account',
+                                'id' => 'pr-account',
+                                'label' => 'Principal Account',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Transaction number of the deed',
-                                'value' => $meta_values['deed_number'],
+                                'help_text' => 'Enter Principal Account',
+                                'value' => $meta_values['pr_account'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -96,36 +96,15 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             ])->render();
                         ?>
                         <?php
-                            $plotNumberField = FieldFactory::get(TextField::class);
-                            $plotNumberField->init([
-                                'name' => 'plot-number',
-                                'id' => 'plot-number',
-                                'label' => 'Plot Number',
+                            $deedDateField = FieldFactory::get(TextField::class);
+                            $deedDateField->init([
+                                'name' => 'bf-account',
+                                'id' => 'bf-account',
+                                'label' => 'Beneficiary Account',
                                 'class' => 'custom-file-input',
                                 'required' => true,
-                                'help_text' => 'Enter Plot number according to the Respective Survey',
-                                'value' => $meta_values['plot_number'],
-                                'data' => [
-                                    'custom' => 'value'
-                                ],
-                                'attributes' => [
-                                    'data-preview-size' => '150'
-                                ]
-                            ])->render();
-                        ?>
-                        
-                    </div>
-                    <div class="panel-row">
-                        <?php
-                            $landQuantityField = FieldFactory::get(TextField::class);
-                            $landQuantityField->init([
-                                'name' => 'land-quantity',
-                                'id' => 'land-quantity',
-                                'label' => 'Finance Quantity (Decimal)',
-                                'class' => 'custom-file-input',
-                                'required' => true,
-                                'help_text' => 'Enter Finance Quantity in decimal used in the Transaction',
-                                'value' => $meta_values['land_quantity'],
+                                'help_text' => 'Enter Beneficiary Account',
+                                'value' => $meta_values['bf_account'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -137,43 +116,23 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                     </div>
                     <div class="panel-row">
                         <?php
-                            // Regular text field for map URL/embed code
-                            $googleMapLocationField = FieldFactory::get(TextField::class);
-                            $googleMapLocationField->init([
-                                'name' => 'google-map-location',
-                                'id' => 'google-map-location',
-                                'label' => 'Google Map Embed Code',
+                            $deedAmountField = FieldFactory::get(TextField::class);
+                            $deedAmountField->init([
+                                'name' => 'trx-amount',
+                                'id' => 'trx-amount',
+                                'label' => 'Transaction Amount',
                                 'class' => 'custom-file-input',
-                                'required' => false,
-                                'help_text' => 'Paste Google Map embed code or share link',
-                                'value' => $this->get_map_location($meta_values['google_map_location']),
+                                'required' => true,
+                                'help_text' => 'Enter Transaction Amount',
+                                'value' => $meta_values['trx_amount'],
+                                'data' => [
+                                    'custom' => 'value'
+                                ],
                                 'attributes' => [
                                     'data-preview-size' => '150'
                                 ]
                             ])->render();
-                        ?>
-                    </div>
-                    <!-- Add new fields for latitude/longitude -->
-                    <div class="panel-row two-columns">
-                        <?php
-                            $latitudeField = FieldFactory::get(TextField::class);
-                            $latitudeField->init([
-                                'name' => 'map-latitude',
-                                'id' => 'map-latitude',
-                                'label' => 'Latitude',
-                                'value' => $meta_values['map_latitude'],
-                                'help_text' => 'e.g., 23.8103'
-                            ])->render();
-                            
-                            $longitudeField = FieldFactory::get(TextField::class);
-                            $longitudeField->init([
-                                'name' => 'map-longitude',
-                                'id' => 'map-longitude',
-                                'label' => 'Longitude',
-                                'value' => $meta_values['map_longitude'],
-                                'help_text' => 'e.g., 90.4125'
-                            ])->render();
-                        ?>
+                        ?>                        
                     </div>
                 </div>
             </div>
@@ -184,13 +143,10 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     public function get_meta_values($post_id): array 
     {
         return [
-            'deed_date' => get_post_meta($post_id, 'deed-date', true) ?: '',
-            'deed_number' => get_post_meta($post_id, 'deed-number', true) ?: '',
-            'plot_number' => get_post_meta($post_id, 'plot-number', true) ?: '',
-            'land_quantity' => get_post_meta($post_id, 'land-quantity', true) ?: '',
-            'google_map_location' => get_post_meta($post_id, 'google-map-location', true) ?: '',
-            'map_latitude' => get_post_meta($post_id, 'map-latitude', true) ?: '',
-            'map_longitude' => get_post_meta($post_id, 'map-longitude', true) ?: ''
+            'trx_date' => get_post_meta($post_id, 'trx-date', true) ?: '',
+            'pr_account' => get_post_meta($post_id, 'pr-account', true) ?: '',
+            'bf_account' => get_post_meta($post_id, 'bf-account', true) ?: '',
+            'trx_amount' => get_post_meta($post_id, 'trx-amount', true) ?: '',
         ];
     }
 
@@ -202,12 +158,10 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         }
 
         // Save text fields
-        $this->save_text_field($post_id,'deed-date',sanitize_text_field($_POST['deed-date'] ?? ''));
-        $this->save_text_field($post_id,'deed-number',sanitize_text_field($_POST['deed-number'] ?? ''));
-        $this->save_text_field($post_id,'plot-number',sanitize_text_field($_POST['plot-number'] ?? ''));
-        $this->save_text_field($post_id,'land-quantity',sanitize_text_field($_POST['land-quantity'] ?? ''));
-        $this->save_text_field($post_id, 'google-map-location', sanitize_textarea_field($this->prepare_map_location($_POST['google-map-location'] ?? '')));
-        $this->save_text_field($post_id, 'map-latitude', sanitize_text_field($_POST['map-latitude'] ?? ''));
-        $this->save_text_field($post_id, 'map-longitude', sanitize_text_field($_POST['map-longitude'] ?? ''));
+        $this->save_text_field($post_id,'trx-date',sanitize_text_field($_POST['trx-date'] ?? ''));
+        $this->save_text_field($post_id,'pr-account',sanitize_text_field($_POST['pr-account'] ?? ''));
+        $this->save_text_field($post_id,'bf-account',sanitize_text_field($_POST['bf-account'] ?? ''));
+        $this->save_text_field($post_id,'trx-amount',sanitize_text_field($_POST['trx-amount'] ?? ''));
+        
     }
 }

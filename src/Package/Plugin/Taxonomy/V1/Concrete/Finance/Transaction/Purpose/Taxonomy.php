@@ -1,5 +1,5 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Purpose;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Taxonomy\V1\Concrete\Finance\Transaction\Purpose;
 
 (defined('ABSPATH') && defined('WPINC')) || exit();
 

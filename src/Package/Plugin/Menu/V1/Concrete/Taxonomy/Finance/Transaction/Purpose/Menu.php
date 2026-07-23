@@ -6,7 +6,7 @@ namespace Ababilithub\FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Fina
 use Ababilithub\{
     FlexPhp\Package\Mixin\V1\Standard\Mixin as StandardMixin,
     FlexWordpress\Package\Menu\V1\Base\Menu as BaseMenu,
-    FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Purpose\Taxonomy as FinanceTransactionPurposeTaxonomy
+    FlexEFinance\Package\Plugin\Taxonomy\V1\Concrete\Finance\Transaction\Purpose\Taxonomy as FinanceTransactionPurposeTaxonomy
 };
 
 use const Ababilithub\{

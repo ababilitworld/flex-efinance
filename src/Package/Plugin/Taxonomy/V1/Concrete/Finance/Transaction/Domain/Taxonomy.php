@@ -1,5 +1,5 @@
 <?php
-namespace Ababilithub\FlexEFinance\Package\Plugin\Taxonomy\V1\Finance\Transaction\Type;
+namespace Ababilithub\FlexEFinance\Package\Plugin\Taxonomy\V1\Concrete\Finance\Transaction\Domain;
 
 (defined('ABSPATH') && defined('WPINC')) || exit();
 
@@ -16,24 +16,24 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
 {
     class Taxonomy extends BaseTaxonomy
     {
-        public const TAXONOMY = 'finance-transaction-type'; 
+        public const TAXONOMY = 'finance-transaction-domain';
         public function init(): void
         {
             $this->taxonomy = self::TAXONOMY;
             $this->slug = self::TAXONOMY;
 
             $this->set_labels([
-                'name'              => _x('Transaction Types', 'taxonomy general name', 'flex-efinance'),
-                'singular_name'     => _x('Transaction Type', 'taxonomy singular name', 'flex-efinance'),
-                'search_items'      => __('Search Transaction Types', 'flex-efinance'),
-                'all_items'         => __('All Transaction Types', 'flex-efinance'),
-                'parent_item'       => __('Parent Transaction Type', 'flex-efinance'),
-                'parent_item_colon' => __('Parent Transaction Type:', 'flex-efinance'),
-                'edit_item'         => __('Edit Transaction Type', 'flex-efinance'),
-                'update_item'       => __('Update Transaction Type', 'flex-efinance'),
-                'add_new_item'      => __('Add New Transaction Type', 'flex-efinance'),
-                'new_item_name'     => __('New Transaction Type Name', 'flex-efinance'),
-                'menu_name'         => __('Transaction Types', 'flex-efinance'),
+                'name'              => _x('Transaction Domains', 'taxonomy general name', 'flex-efinance'),
+                'singular_name'     => _x('Transaction Domain', 'taxonomy singular name', 'flex-efinance'),
+                'search_items'      => __('Search Transaction Domains', 'flex-efinance'),
+                'all_items'         => __('All Transaction Domains', 'flex-efinance'),
+                'parent_item'       => __('Parent Transaction Domain', 'flex-efinance'),
+                'parent_item_colon' => __('Parent Transaction Domain:', 'flex-efinance'),
+                'edit_item'         => __('Edit Transaction Domain', 'flex-efinance'),
+                'update_item'       => __('Update Transaction Domain', 'flex-efinance'),
+                'add_new_item'      => __('Add New Transaction Domain', 'flex-efinance'),
+                'new_item_name'     => __('New Transaction Domain Name', 'flex-efinance'),
+                'menu_name'         => __('Transaction Domains', 'flex-efinance'),
             ]);
 
             $this->set_args([
@@ -79,18 +79,18 @@ if (!class_exists(__NAMESPACE__.'\Taxonomy'))
                 /*
                 * General transaction purposes.
                 */
-                'normal' => [
-                    'name'        => 'Normal',
-                    'description' => 'Transaction Type',
+                'internal' => [
+                    'name'        => 'Internal',
+                    'description' => 'Transaction Domain',
                     'metas'       => [
-                        'finance_term' => 'Type',
+                        'finance_term' => 'Internal',
                     ],
                 ],
-                'deed' => [
-                    'name'        => 'Deed',
-                    'description' => 'Transaction Type',
+                'external' => [
+                    'name'        => 'External',
+                    'description' => 'Transaction Domain',
                     'metas'       => [
-                        'finance_term' => 'Type',
+                        'finance_term' => 'External',
                     ],
                 ],
             ];

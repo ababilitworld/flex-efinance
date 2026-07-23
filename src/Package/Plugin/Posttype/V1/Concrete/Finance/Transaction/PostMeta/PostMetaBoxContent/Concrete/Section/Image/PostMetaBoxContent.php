@@ -54,16 +54,16 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
             
             <div class="panel">
                 <div class="panel-header">
-                    <h2 class="panel-title">Transaction Images</h2>
+                    <h2 class="panel-title">Images</h2>
                 </div>
                 <div class="panel-body">
                     <div class="panel-row">
                         <?php
                             $imageField = FieldFactory::get(ImageField::class);
                             $imageField->init([
-                                'name' => 'deed-thumbnail-image',
-                                'id' => 'deed-thumbnail-image',
-                                'label' => 'Transaction Thumbnail',
+                                'name' => 'thumbnail-image',
+                                'id' => 'thumbnail-image',
+                                'label' => 'Thumbnail Image',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => false,
@@ -72,7 +72,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                                 'enable_media_library' => true,
                                 'upload_action_text' => 'Select Image',
                                 'help_text' => 'Only jpg, png, gif, webp files are allowed',
-                                'preview_items' => $meta_values['deed_thumbnail_image'],
+                                'preview_items' => $meta_values['thumbnail_image'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -84,9 +84,9 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                         <?php
                             $imageField = FieldFactory::get(ImageField::class);
                             $imageField->init([
-                                'name' => 'deed-images',
-                                'id' => 'deed-images',
-                                'label' => 'Transaction Images',
+                                'name' => 'gallery-images',
+                                'id' => 'gallery-images',
+                                'label' => 'Gallery Images',
                                 'class' => 'custom-file-input',
                                 'required' => true,
                                 'multiple' => true,
@@ -95,7 +95,7 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                                 'enable_media_library' => true,
                                 'upload_action_text' => 'Select Images',
                                 'help_text' => 'Only jpg, png, gif, webp files are allowed',
-                                'preview_items' => $meta_values['deed_images'],
+                                'preview_items' => $meta_values['gallery_images'],
                                 'data' => [
                                     'custom' => 'value'
                                 ],
@@ -114,8 +114,8 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
     public function get_meta_values($post_id): array 
     {
         return [
-            'deed_thumbnail_image' => get_post_meta($post_id, 'deed-thumbnail-image', true) ?: '',
-            'deed_images' => get_post_meta($post_id, 'deed-images', true) ?: [],            
+            'thumbnail_image' => get_post_meta($post_id, 'thumbnail-image', true) ?: '',
+            'gallery_images' => get_post_meta($post_id, 'gallery-images', true) ?: [],            
         ];
     }
 
@@ -127,8 +127,8 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         }
 
         // Save media (IDs)
-        $this->save_thumbnail_image($post_id,'deed-thumbnail-image',absint($_POST['deed-thumbnail-image'] ?? ''));
-        $this->save_multiple_images($post_id,'deed-images',array_map('sanitize_text_field',$_POST['deed-images'] ?? []));
+        $this->save_thumbnail_image($post_id,'thumbnail-image',absint($_POST['thumbnail-image'] ?? ''));
+        $this->save_multiple_images($post_id,'gallery-images',array_map('sanitize_text_field',$_POST['gallery-images'] ?? []));
         
     }
 }
