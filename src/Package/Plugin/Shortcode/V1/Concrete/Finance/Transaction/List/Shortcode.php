@@ -7,7 +7,7 @@ namespace Ababilithub\FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Finance\
 use Ababilithub\{
     FlexWordpress\Package\Shortcode\V1\Base\Shortcode as BaseShortcode,
     FlexEFinance\Package\Plugin\Posttype\V1\Concrete\Finance\Transaction\Posttype as FinanceTransactionPosttype,
-    FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Finance\Transaction\List\Presentation\Template\List\PremiumCard\Template as PosttypeListTemplate
+    FlexEFinance\Package\Plugin\Shortcode\V1\Concrete\Finance\Transaction\List\Presentation\Template\List\Transaction\Template as PosttypeListTemplate
 };
 
 use const Ababilithub\{
@@ -34,8 +34,8 @@ class Shortcode extends BaseShortcode
             'status' => 'publish',
             'pagination_style' => 'load_more',
             'pagination_attribute' => 'centered,rounded',
-            'pagination_type' => '',
-            'pagination_size' => 'medium',
+            'pagination_type' => 'paged',
+            'pagination_size' => 'small',
             'pagination_color' => 'primary',
             'search_filter' => 'yes',
             'sidebar_filter' => 'yes',
