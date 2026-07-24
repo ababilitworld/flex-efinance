@@ -134,6 +134,44 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
                             ])->render();
                         ?>                        
                     </div>
+                    <div class="panel-row two-columns">
+                        <?php
+                            $dcrBookIdField = FieldFactory::get(TextField::class);
+                            $dcrBookIdField->init([
+                                'name' => 'trx-dcr-book-id',
+                                'id' => 'trx-dcr-book-id',
+                                'label' => 'DCR Book ID',
+                                'class' => 'custom-file-input',
+                                'required' => false,
+                                'help_text' => 'Enter DCR Book ID',
+                                'value' => $meta_values['trx_dcr_book_id'],
+                                'data' => [
+                                    'custom' => 'value'
+                                ],
+                                'attributes' => [
+                                    'data-preview-size' => '150'
+                                ]
+                            ])->render();
+                        ?>
+                        <?php
+                            $dcrTransactionIdField = FieldFactory::get(TextField::class);
+                            $dcrTransactionIdField->init([
+                                'name' => 'trx-dcr-book-trx-id',
+                                'id' => 'trx-dcr-book-trx-id',
+                                'label' => 'DCR Transaction ID',
+                                'class' => 'custom-file-input',
+                                'required' => false,
+                                'help_text' => 'Enter DCR Transaction ID',
+                                'value' => $meta_values['trx_dcr_book_trx_id'],
+                                'data' => [
+                                    'custom' => 'value'
+                                ],
+                                'attributes' => [
+                                    'data-preview-size' => '150'
+                                ]
+                            ])->render();
+                        ?>
+                    </div>
                 </div>
             </div>
         <?php
@@ -147,6 +185,8 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
             'pr_account' => get_post_meta($post_id, 'pr-account', true) ?: '',
             'bf_account' => get_post_meta($post_id, 'bf-account', true) ?: '',
             'trx_amount' => get_post_meta($post_id, 'trx-amount', true) ?: '',
+            'trx_dcr_book_id' => get_post_meta($post_id, 'trx-dcr-book-id', true) ?: '',
+            'trx_dcr_book_trx_id' => get_post_meta($post_id, 'trx-dcr-book-trx-id', true) ?: '',
         ];
     }
 
@@ -162,6 +202,8 @@ class PostMetaBoxContent extends BasePostMetaBoxContent
         $this->save_text_field($post_id,'pr-account',sanitize_text_field($_POST['pr-account'] ?? ''));
         $this->save_text_field($post_id,'bf-account',sanitize_text_field($_POST['bf-account'] ?? ''));
         $this->save_text_field($post_id,'trx-amount',sanitize_text_field($_POST['trx-amount'] ?? ''));
+        $this->save_text_field($post_id,'trx-dcr-book-id',sanitize_text_field($_POST['trx-dcr-book-id'] ?? ''));
+        $this->save_text_field($post_id,'trx-dcr-book-trx-id',sanitize_text_field($_POST['trx-dcr-book-trx-id'] ?? ''));
         
     }
 }

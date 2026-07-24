@@ -33,6 +33,9 @@
     "require-dev": {
         
      },
+    "require": {
+        "ababilitworld/flex-aahub": "dev-main"
+    },
     "autoload-dev": {
         "psr-4": {
             "Ababilithub\\FlexEFinance\\": "Test/"

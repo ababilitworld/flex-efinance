@@ -14,6 +14,7 @@ use Ababilithub\{
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Taxonomy\Finance\Transaction\Action\Menu as FinanceTransactionActionMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Posttype\Finance\Transaction\Menu as FinanceTransactionMenu,
     FlexEFinance\Package\Plugin\Menu\V1\Concrete\Shortcode\Finance\Transaction\List\Menu as FinanceTransactionListMenu,
+    FlexEFinance\Package\Plugin\Menu\V1\Concrete\Faker\Finance\Transaction\Menu as FinanceTransactionFakerMenu,
 
 };
 
@@ -35,6 +36,7 @@ class  Menu extends BaseManager
                 FinanceTransactionActionMenu::class,
                 FinanceTransactionMenu::class,
                 FinanceTransactionListMenu::class,                  
+                FinanceTransactionFakerMenu::class,
             ]
         );
     }
